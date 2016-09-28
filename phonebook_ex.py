@@ -21,17 +21,18 @@ while (x == 0):
     menu_select = int(raw_input("What do you want to do (1-6)? "))
 
     if menu_select == 1:
-        name_look_up = raw_input("Name: ").lower()
+        name_look_up = raw_input("Name: ").lower().title()
         name_find = name_look_up in temp_dict
         if name_find:
             tel = temp_dict[name_look_up]
+            name_look_up = name_look_up.title()
             print "Found entry for %s: %r" % (name_look_up, tel)
         else:
-            print "No entry found for %s" %name_look_up
+            print "No entry found for %s" % name_look_up
 
     if menu_select == 2:
 
-        name_set = raw_input("Name: ").lower()
+        name_set = raw_input("Name: ").lower().title()
         which_number =  raw_input("Work, Cell, or Home number? ").lower()
         if name_set in temp_dict:
             if "work" in temp_dict[name_set]:
@@ -54,7 +55,8 @@ while (x == 0):
             home_number = raw_input("Enter home number: ")
             temp_dict[name_set]['home'] = home_number
         else:
-            print "Please enter 'work', 'home', or 'cell'"
+            pass
+        name_set = name_set.title()
         print "Entry stored for %s" % name_set
 
     if menu_select == 3:
@@ -66,8 +68,12 @@ while (x == 0):
         else:
             print "No entry found for %s" %name_look_up
     if menu_select == 4:
-        for names, tels in temp_dict.items():
-            print "Found entry for %s : %s" % (names, tels)
+        #print_out = temp_dict.items()
+        for names, tels in temp_dict.iteritems():
+            cell_number = tels.get("cell", "N/A")
+            home_number = tels.get("home", "N/A")
+            work_number = tels.get("work", "N/A")
+            print "Found entry for %s : Cell number: %s, Home number: %s, Work number: %s" % (names, cell_number, home_number, work_number)
 
     if menu_select == 5:
         myfile = open('telephone_book.pickle', 'w')

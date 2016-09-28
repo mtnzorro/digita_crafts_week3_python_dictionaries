@@ -4,10 +4,10 @@ script, filename = argv
 
 target = open(filename)
 text = target.read()
-blues = text.replace('.', '').replace('(', '').replace(')', '').lower()
+blues = text.replace('.', '').replace('(', '').replace(')', '').replace(',', '').replace('!', '').lower()
 blues = blues.split()
 char_dict = {}
-temp_word = []
+#temp_word = []
 for word in blues:
 
     #if char == " " or char == "," or char == "!":
