@@ -79,7 +79,7 @@ while (x == 0):
         myfile = open('telephone_book.pickle', 'w')
         pickle.dump(temp_dict, myfile)
         myfile.close()
-
+        print "Phone book saved."
     if menu_select == 6:
         print "Bye."
         x += 1
